@@ -1,0 +1,46 @@
+/* Ensures the body takes up full height and applies appropriate transition for dark mode */
+body {
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Styling for the navigation links */
+a {
+  text-decoration: none;
+  position: relative;
+}
+
+/* Hover effect for links */
+a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #7c3aed; /* violet */
+  transition: width 0.3s ease;
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+/* Button styling for the theme toggle */
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Adding some padding and transition to the icon */
+button i {
+  transition: transform 0.3s ease;
+}
+
+button:hover i {
+  transform: rotate(20deg);
+}
+.shadoww{
+  box-shadow: 0 6px 12px rgb(238, 130, 238);
+}
