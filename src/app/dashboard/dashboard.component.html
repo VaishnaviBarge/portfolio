@@ -1,59 +1,28 @@
 <div class="relative min-h-screen light-gradient dark:dark-gradient transition-all duration-500">
-  <!-- Floating Particles -->
-  <div class="floating-particles">
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-  </div>
+  <!-- Canvas for Interactive Particles -->
+  <canvas #particleCanvas class="absolute inset-0 w-full h-full z-1"></canvas>
 
-  <!-- Background Images (keeping your original structure) -->
-  <img src="../../assets/light-bg.jpg" alt="" class="absolute inset-0 w-full h-full object-cover z-0 dark:hidden opacity-30">
-  
   <!-- Enhanced overlay with gradient -->
-  <div class="absolute inset-0 bg-gradient-to-br from-white/80 via-blue-50/60 to-purple-50/80 dark:from-gray-900/90 dark:via-purple-900/70 dark:to-blue-900/90 z-5"></div>
-
-  <!-- Decorative Elements -->
-  <div class="absolute top-20 left-20 w-32 h-32 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
-  <div class="absolute bottom-20 right-20 w-40 h-40 bg-blue-500/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
-  <div class="absolute top-1/2 left-1/4 w-24 h-24 bg-green-500/20 rounded-full blur-2xl animate-pulse" style="animation-delay: 4s;"></div>
+  <div class="absolute inset-0 dark:bg-[linear-gradient(135deg,_#00050e_0%,_#0e0525_100%)]"></div>
 
   <!-- Main Content Container -->
   <div class="relative grid grid-cols-1 lg:grid-cols-2 gap-6 pt-4 px-8 pb-8 lg:pt-8 lg:px-16 lg:pb-16 min-h-screen items-center z-10">
  
     <!-- Left Side - Content -->
-    <div class="fade-in space-y-6">
+    <div class="fade-in space-y-6 px-4">
       <!-- Main Heading -->
       <div class="text-center lg:text-left">
         <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl text-gray-900 dark:text-white mb-4 leading-tight">
-          Hi, it's <span class="text-gradient bg-gradient-to-r from-yellow-500 to-orange-500 dark:from-yellow-400 dark:to-orange-400 bg-clip-text text-transparent font-bold">Vaishnavi Barge</span>
-        </h1>
+  Hi, it's 
+  <span 
+    class="text-gradient bg-gradient-to-r from-purple-900 via-purple-600 to-pink-400 
+           dark:from-blue-300 dark:via-purple-600 dark:to-pink-300 
+           bg-clip-text text-transparent font-bold transition-all duration-300"
+  >
+    Vaishnavi Barge
+  </span>
+</h1>
+
         <h2 class="font-serif text-xl sm:text-2xl lg:text-3xl text-gray-700 dark:text-gray-300 mb-6">
           Shaping the Future with Code
         </h2>
@@ -74,23 +43,22 @@
           I'm passionate about building full-stack web applications that are efficient and user-centric. 
           Currently enhancing my skills in <span class="text-pink-600 dark:text-pink-400 font-semibold">Prisma ORM</span> and 
           <span class="text-yellow-600 dark:text-yellow-400 font-semibold">Next.js</span>, 
-          I’m eager to contribute to innovative and impactful software development projects.
+          I'm eager to contribute to innovative and impactful software development projects.
         </p>
       </div>
-
 
       <!-- Social Links -->
       <div class="flex justify-center lg:justify-start space-x-6" *ngIf="showElement" [@fadeIn]>
         <a href="https://www.linkedin.com/in/vaishnavi-barge" target="_blank" 
-           class="social-icon group text-2xl text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 p-3 rounded-xl bg-white/20 dark:bg-gray-800/30 backdrop-blur-sm border border-blue-300/50 dark:border-blue-500/50 transition-all duration-300 hover:scale-110 hover:rotate-3">
+           class="social-icon group text-2xl text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 p-2 rounded-xl bg-white/20 dark:bg-gray-800/30 backdrop-blur-sm border border-blue-300/50 dark:border-blue-500/50 transition-all duration-300 hover:scale-110 hover:rotate-3">
           <i class='bx bxl-linkedin group-hover:animate-bounce'></i>
         </a>
         <a href="https://github.com/VaishnaviBarge" target="_blank" 
-           class="social-icon group text-2xl text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white p-3 rounded-xl bg-white/20 dark:bg-gray-800/30 backdrop-blur-sm border border-gray-300/50 dark:border-gray-500/50 transition-all duration-300 hover:scale-110 hover:rotate-3">
+           class="social-icon group text-2xl text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white p-2 rounded-xl bg-white/20 dark:bg-gray-800/30 backdrop-blur-sm border border-gray-300/50 dark:border-gray-500/50 transition-all duration-300 hover:scale-110 hover:rotate-3">
           <i class='bx bxl-github group-hover:animate-bounce'></i>
         </a>
         <a href="https://x.com/vaish1903" target="_blank" 
-           class="social-icon group text-2xl text-blue-400 dark:text-blue-300 hover:text-blue-500 dark:hover:text-blue-200 p-3 rounded-xl bg-white/20 dark:bg-gray-800/30 backdrop-blur-sm border border-blue-300/50 dark:border-blue-500/50 transition-all duration-300 hover:scale-110 hover:rotate-3">
+           class="social-icon group text-2xl text-blue-400 dark:text-blue-300 hover:text-blue-500 dark:hover:text-blue-200 p-2 rounded-xl bg-white/20 dark:bg-gray-800/30 backdrop-blur-sm border border-blue-300/50 dark:border-blue-500/50 transition-all duration-300 hover:scale-110 hover:rotate-3">
           <i class='bx bxl-twitter group-hover:animate-bounce'></i>
         </a>
       </div>
@@ -98,28 +66,28 @@
       <!-- Action Buttons -->
       <div class="flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-6">
         <a href="../../assets/Vaishnavi_barge cv.pdf" download="Vaishnavi_Barge_CV.pdf" 
-           class="btn-gradient group px-8 py-3 text-white rounded-xl shadow-lg hover-lift font-semibold text-center bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-700 hover:to-purple-900 transition-all duration-300 transform hover:scale-105">
+           class="btn-secondary group px-8 py-3 text-white rounded-xl shadow-lg hover-lift font-semibold text-center bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-700 hover:to-purple-900 transition-all duration-300 transform hover:scale-105">
           <i class='bx bx-download mr-2 group-hover:animate-bounce'></i>Download CV
         </a>
         <a href="#contact" 
-           class="btn-secondary group px-8 py-3 text-white rounded-xl shadow-lg hover-lift font-semibold text-center bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-yellow-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105">
+           class="btn-secondary group px-8 py-3 text-white rounded-xl shadow-lg hover-lift font-semibold text-center bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-700 hover:to-purple-900 transition-all duration-300 transform hover:scale-105">
           <i class='bx bx-envelope mr-2 group-hover:animate-bounce'></i>Contact Me
         </a>
       </div>
     </div>
 
     <!-- Right Side - Profile Image -->
-    <div class="flex justify-center items-center fade-in">
+    <!-- <div class="flex justify-center items-center fade-in">
       <div class="profile-container relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 hover-lift">
-        <!-- Animated border -->
-        <div class="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 via-blue-500 via-green-500 via-yellow-500 to-red-500 animate-spin-slow p-1">
+        
+        <div class="absolute inset-0 rounded-full animate-spin-slow p-1">
           <div class="w-full h-full rounded-full bg-white dark:bg-gray-900 p-2">
             <img src="../../assets/image.jpg" alt="Vaishnavi Barge Profile" 
-                 class="w-full h-full object-cover rounded-full shadow-2xl">
+                 class="w-full h-full object-cover rounded-full ">
           </div>
         </div>
         
-        <!-- Floating icons around profile -->
+        
         <div class="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center text-white text-xl animate-bounce">
           <i class='bx bx-code-alt'></i>
         </div>
@@ -130,6 +98,6 @@
           <i class='bx bxl-angular'></i>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>

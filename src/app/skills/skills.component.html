@@ -1,103 +1,353 @@
-<div class="border rounded-lg shadow-lg pb-12 mx-4 sm:mx-12 my-12">
-  <!-- Title -->
-  <div>
-    <p class="font-serif flex justify-center items-center text-3xl sm:text-4xl text-yellow-500 pt-4">Skills</p>
+<div class="comp w-full px-4 py-12">
+  <!-- Enhanced Title Section -->
+  <div class="w-full flex flex-col items-center justify-center text-center mb-16 px-4">
+    <h2 class="text-gradient bg-gradient-to-r from-yellow-500 to-orange-500 dark:from-yellow-400 dark:to-orange-400 bg-clip-text text-transparent font-bold text-4xl">
+      Technical Skills
+    </h2>
+    <p class="text-lg sm:text-xl max-w-2xl 
+              text-gray-600 dark:text-gray-300 transition-colors duration-300">
+      Explore my technical expertise across different domains of software development.
+    </p>
+    </div>
+
+  <!-- Enhanced Tab Navigation -->
+  <div class="flex flex-wrap justify-center gap-4 mb-12">
+    <button 
+      (click)="setActiveTab('frontend')" 
+      [class]="isActiveTab('frontend') ? ' active bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg hover:shadow-xl' : ' bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-purple-300 hover:text-purple-600'"
+      class="px-6 py-3 rounded-full font-semibold transition-all">
+      Frontend
+    </button>
+    <button 
+      (click)="setActiveTab('backend')" 
+      [class]="isActiveTab('backend') ? ' active bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg hover:shadow-xl' : ' bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-purple-300 hover:text-purple-600'"
+      class="px-6 py-3 rounded-full font-semibold transition-all">
+      Backend
+    </button>
+    <button 
+      (click)="setActiveTab('database')" 
+      [class]="isActiveTab('database') ? ' active bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg hover:shadow-xl' : ' bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-purple-300 hover:text-purple-600'"
+      class="px-6 py-3 rounded-full font-semibold transition-all">
+      Database
+    </button>
+    <button 
+      (click)="setActiveTab('cloud')" 
+      [class]="isActiveTab('cloud') ? ' active bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg hover:shadow-xl' : ' bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-purple-300 hover:text-purple-600'"
+      class="px-6 py-3 rounded-full font-semibold transition-all">
+      Cloud & DevOps
+    </button>
   </div>
 
-  <!-- Cards Section -->
-  <div class="container mx-auto p-6">
-    <div class="flex flex-wrap justify-center gap-3 mt-3">
-      <!-- Flip Card 1 -->
-      <div class="flip-card bg-transparent w-full sm:w-80 md:w-60 lg:w-72 h-64 perspective">
-        <div class="flip-card-inner relative w-full h-full text-center transition-transform duration-800 transform-style-preserve-3d">
-          <!-- Front Side of the Card -->
-          <div class="flip-card-front absolute w-full h-full backface-hidden border-2 rounded-lg shadow-lg">
-            <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden h-full flex flex-col">
-              <img class="mx-auto mt-4" style="width: 100px;" src="../../assets/undraw_updated_resume_re_7r9j.svg" alt="Skill Icon" />
-              <div class="p-6">
-                <h3 class="text-xl font-semibold text-center text-gray-900 dark:text-white">Frontend Development</h3>
-              </div>
-            </div>
-          </div>
-          <!-- Back Side of the Card -->
-          <div class="flip-card-back absolute w-full h-full backface-hidden border-2 rounded-lg shadow-lg">
-            <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 flex flex-col justify-between h-full">
-              <h3 class="text-xl font-semibold text-center text-gray-900 dark:text-white">Frontend Development</h3>
-              <hr class="border-gray-300 dark:border-gray-600 my-4">
-              <p class="text-center text-gray-700 dark:text-gray-300">Building responsive, user-friendly websites with HTML, CSS, JavaScript, and frameworks like Angular.</p>
-            </div>
+  <!-- Skills Cards Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    
+    <!-- Frontend Skills -->
+    <div *ngIf="isActiveTab('frontend')" class="flip-card skill-card perspective">
+      <div class="flip-card-inner">
+        <!-- Front -->
+        <div class="flip-card-front bg-white dark:bg-gray-900 shadow-xl border border-gray-200 dark:border-gray-900">
+          <div class="p-8 h-full flex flex-col items-center justify-center">
+            <div class="skill-icon frontend mb-4">⚛️</div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Frontend Frameworks</h3>
+            <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></div>
           </div>
         </div>
-      </div>
-
-      <!-- Flip Card 2 -->
-      <div class="flip-card bg-transparent w-full sm:w-80 md:w-60 lg:w-72 h-64 perspective">
-        <div class="flip-card-inner relative w-full h-full text-center transition-transform duration-800 transform-style-preserve-3d">
-          <!-- Front Side of the Card -->
-          <div class="flip-card-front absolute w-full h-full backface-hidden border-2 rounded-lg shadow-lg">
-            <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden h-full flex flex-col">
-              <img class="mx-auto mt-4" style="width: 100px;" src="../../assets/undraw_updated_resume_re_7r9j.svg" alt="Skill Icon" />
-              <div class="p-6">
-                <h3 class="text-xl font-semibold text-center text-gray-900 dark:text-white">Backend Development</h3>
-              </div>
+        <!-- Back -->
+        <div class="flip-card-back bg-gradient-to-br from-blue-500 to-purple-600 text-white shadow-xl">
+          <div class="p-6 h-full flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold mb-4">Frontend Frameworks</h3>
+              <p class="text-blue-100 mb-4">Building modern, responsive web applications with React, Angular, and Next.js</p>
             </div>
-          </div>
-          <!-- Back Side of the Card -->
-          <div class="flip-card-back absolute w-full h-full backface-hidden border-2 rounded-lg shadow-lg">
-            <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 flex flex-col justify-between h-full">
-              <h3 class="text-xl font-semibold text-center text-gray-900 dark:text-white">Backend Development</h3>
-              <hr class="border-gray-300 dark:border-gray-600 my-4">
-              <p class="text-center text-gray-700 dark:text-gray-300">Developing secure and scalable backend systems using Node.js, Java, and Spring Boot.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Flip Card 3 -->
-      <div class="flip-card bg-transparent w-full sm:w-80 md:w-60 lg:w-72 h-64 perspective">
-        <div class="flip-card-inner relative w-full h-full text-center transition-transform duration-800 transform-style-preserve-3d">
-          <!-- Front Side of the Card -->
-          <div class="flip-card-front absolute w-full h-full backface-hidden border-2 rounded-lg shadow-lg">
-            <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden h-full flex flex-col">
-              <img class="mx-auto mt-4" style="width: 100px;" src="../../assets/undraw_updated_resume_re_7r9j.svg" alt="Skill Icon" />
-              <div class="p-6">
-                <h3 class="text-xl font-semibold text-center text-gray-900 dark:text-white">Database Management</h3>
-              </div>
-            </div>
-          </div>
-          <!-- Back Side of the Card -->
-          <div class="flip-card-back absolute w-full h-full backface-hidden border-2 rounded-lg shadow-lg">
-            <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 flex flex-col justify-between h-full">
-              <h3 class="text-xl font-semibold text-center text-gray-900 dark:text-white">Database Management</h3>
-              <hr class="border-gray-300 dark:border-gray-600 my-4">
-              <p class="text-center text-gray-700 dark:text-gray-300">Managing databases using MySQL, Oracle SQL, ensuring data integrity and optimized queries.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Flip Card 4 -->
-      <div class="flip-card bg-transparent w-full sm:w-80 md:w-60 lg:w-72 h-64 perspective">
-        <div class="flip-card-inner relative w-full h-full text-center transition-transform duration-800 transform-style-preserve-3d">
-          <!-- Front Side of the Card -->
-          <div class="flip-card-front absolute w-full h-full backface-hidden border-2 rounded-lg shadow-lg">
-            <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden h-full flex flex-col">
-              <img class="mx-auto mt-4" style="width: 100px;" src="../../assets/undraw_updated_resume_re_7r9j.svg" alt="Skill Icon" />
-              <div class="p-6">
-                <h3 class="text-xl font-semibold text-center text-gray-900 dark:text-white">Cloud Services</h3>
-              </div>
-            </div>
-          </div>
-          <!-- Back Side of the Card -->
-          <div class="flip-card-back absolute w-full h-full backface-hidden border-2 rounded-lg shadow-lg">
-            <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 flex flex-col justify-between h-full">
-              <h3 class="text-xl font-semibold text-center text-gray-900 dark:text-white">Cloud Services</h3>
-              <hr class="border-gray-300 dark:border-gray-600 my-4">
-              <p class="text-center text-gray-700 dark:text-gray-300">Leveraging cloud platforms such as AWS and Azure for scalable solutions and cloud-based services.</p>
+            <div class="space-y-2">
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">React.js</div>
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">Angular</div>
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">Next.js</div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <div *ngIf="isActiveTab('frontend')" class="flip-card skill-card perspective">
+      <div class="flip-card-inner">
+        <div class="flip-card-front bg-white dark:bg-gray-900 shadow-xl border border-gray-200 dark:border-gray-900">
+          <div class="p-8 h-full flex flex-col items-center justify-center">
+            <div class="skill-icon frontend mb-4">🎨</div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">UI/UX Design</h3>
+            <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></div>
+          </div>
+        </div>
+        <div class="flip-card-back bg-gradient-to-br from-purple-500 to-pink-500 text-white shadow-xl">
+          <div class="p-6 h-full flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold mb-4">Design Systems</h3>
+              <p class="text-purple-100 mb-4">Creating intuitive user interfaces with modern design principles</p>
+            </div>
+            <div class="space-y-2">
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">Tailwind CSS</div>
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">Bootstrap</div>
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">Responsive Design</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isActiveTab('frontend')" class="flip-card skill-card perspective">
+      <div class="flip-card-inner">
+        <div class="flip-card-front bg-white dark:bg-gray-900 shadow-xl border border-gray-200 dark:border-gray-900">
+          <div class="p-8 h-full flex flex-col items-center justify-center">
+            <div class="skill-icon frontend mb-4">📱</div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Web Technologies</h3>
+            <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></div>
+          </div>
+        </div>
+        <div class="flip-card-back bg-gradient-to-br from-indigo-500 to-blue-500 text-white shadow-xl">
+          <div class="p-6 h-full flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold mb-4">Core Technologies</h3>
+              <p class="text-indigo-100 mb-4">Mastery of fundamental web technologies and modern standards</p>
+            </div>
+            <div class="space-y-2">
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">HTML5</div>
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">CSS3</div>
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">JavaScript</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Backend Skills -->
+    <div *ngIf="isActiveTab('backend')" class="flip-card skill-card perspective">
+      <div class="flip-card-inner">
+        <div class="flip-card-front bg-white dark:bg-gray-900 shadow-xl border border-gray-200 dark:border-gray-900">
+          <div class="p-8 h-full flex flex-col items-center justify-center">
+            <div class="skill-icon backend mb-4">⚡</div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Node.js & APIs</h3>
+            <div class="w-16 h-1 bg-gradient-to-r from-pink-500 to-red-500 rounded-full"></div>
+          </div>
+        </div>
+        <div class="flip-card-back bg-gradient-to-br from-pink-500 to-red-500 text-white shadow-xl">
+          <div class="p-6 h-full flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold mb-4">Server-Side Development</h3>
+              <p class="text-pink-100 mb-4">Building scalable APIs and backend services using Node.js, Express, and Supabase (BaaS)</p>
+            </div>
+            <div class="space-y-2">
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">Node.js</div>
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">Express.js</div>
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">Supabase</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isActiveTab('backend')" class="flip-card skill-card perspective">
+      <div class="flip-card-inner">
+        <div class="flip-card-front bg-white dark:bg-gray-900 shadow-xl border border-gray-200 dark:border-gray-900">
+          <div class="p-8 h-full flex flex-col items-center justify-center">
+            <div class="skill-icon backend mb-4">☕</div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Java & Spring</h3>
+            <div class="w-16 h-1 bg-gradient-to-r from-pink-500 to-red-500 rounded-full"></div>
+          </div>
+        </div>
+        <div class="flip-card-back bg-gradient-to-br from-red-500 to-orange-500 text-white shadow-xl">
+          <div class="p-6 h-full flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold mb-4">Enterprise Applications</h3>
+              <p class="text-red-100 mb-4">Developing robust enterprise solutions with Java and Spring Boot</p>
+            </div>
+            <div class="space-y-2">
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">Java</div>
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">Spring Boot</div>
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">Microservices</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isActiveTab('backend')" class="flip-card skill-card perspective">
+      <div class="flip-card-inner">
+        <div class="flip-card-front bg-white dark:bg-gray-900 shadow-xl border border-gray-200 dark:border-gray-900">
+          <div class="p-8 h-full flex flex-col items-center justify-center">
+            <div class="skill-icon backend mb-4">🔗</div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">API Development</h3>
+            <div class="w-16 h-1 bg-gradient-to-r from-pink-500 to-red-500 rounded-full"></div>
+          </div>
+        </div>
+        <div class="flip-card-back bg-gradient-to-br from-orange-500 to-yellow-500 text-white shadow-xl">
+          <div class="p-6 h-full flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold mb-4">API Architecture</h3>
+              <p class="text-orange-100 mb-4">Designing and developing scalable RESTful APIs with proper routing, authentication, and data validation.</p>
+            </div>
+            <div class="space-y-2">
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">REST API</div>
+              <!-- <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">GraphQL</div> -->
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">Postman</div>
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">JWT Auth</div>
+              <!-- <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">API Design</div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Database Skills -->
+    <div *ngIf="isActiveTab('database')" class="flip-card skill-card perspective">
+      <div class="flip-card-inner">
+        <div class="flip-card-front bg-white dark:bg-gray-900 shadow-xl border border-gray-200 dark:border-gray-900">
+          <div class="p-8 h-full flex flex-col items-center justify-center">
+            <div class="skill-icon database mb-4">🗄️</div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">SQL Databases</h3>
+            <div class="w-16 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
+          </div>
+        </div>
+        <div class="flip-card-back bg-gradient-to-br from-cyan-500 to-blue-500 text-white shadow-xl">
+          <div class="p-6 h-full flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold mb-4">Relational Databases</h3>
+              <p class="text-cyan-100 mb-4">Designing and querying relational databases using modern SQL tools</p>
+            </div>
+            <div class="space-y-2">
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">MySQL</div>
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">PostgreSQL</div>
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">Prisma ORM</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isActiveTab('database')" class="flip-card skill-card perspective">
+      <div class="flip-card-inner">
+        <div class="flip-card-front bg-white dark:bg-gray-900 shadow-xl border border-white-200 dark:border-gray-900">
+          <div class="p-8 h-full flex flex-col items-center justify-center">
+            <div class="skill-icon database mb-4">🍃</div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">NoSQL Databases</h3>
+            <div class="w-16 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
+          </div>
+        </div>
+        <div class="flip-card-back bg-gradient-to-br from-green-500 to-teal-500 text-white shadow-xl">
+          <div class="p-6 h-full flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold mb-4">Document Databases</h3>
+              <p class="text-green-100 mb-4">Working with flexible NoSQL databases for unstructured and semi-structured data</p>
+            </div>
+            <div class="space-y-2">
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">MongoDB</div>
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">Document Modeling</div>
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">NoSQL Queries</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isActiveTab('database')" class="flip-card skill-card perspective">
+      <div class="flip-card-inner">
+        <div class="flip-card-front bg-white dark:bg-gray-900 shadow-xl border border-gray-200 dark:border-gray-900">
+          <div class="p-8 h-full flex flex-col items-center justify-center">
+            <div class="skill-icon database mb-4">📊</div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Data Management</h3>
+            <div class="w-16 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
+          </div>
+        </div>
+        <div class="flip-card-back bg-gradient-to-br from-teal-500 to-green-500 text-white shadow-xl">
+          <div class="p-6 h-full flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold mb-4">Database Optimization</h3>
+              <p class="text-teal-100 mb-4">Modeling data efficiently, optimizing queries, and ensuring database performance with tools like Prisma and PostgreSQL</p>
+            </div>
+            <div class="space-y-2">
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">Prisma ORM</div>
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">Indexing</div>
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">Data Modeling</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cloud Skills -->
+    <div *ngIf="isActiveTab('cloud')" class="flip-card skill-card perspective">
+      <div class="flip-card-inner">
+        <div class="flip-card-front bg-white dark:bg-gray-900 shadow-xl border border-gray-200 dark:border-gray-900">
+          <div class="p-8 h-full flex flex-col items-center justify-center">
+            <div class="skill-icon cloud mb-4">☁️</div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Cloud Hosting</h3>
+            <div class="w-16 h-1 bg-gradient-to-r from-green-500 to-teal-500 rounded-full"></div>
+          </div>
+        </div>
+        <div class="flip-card-back bg-gradient-to-br from-green-500 to-teal-500 text-white shadow-xl">
+          <div class="p-6 h-full flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold mb-4">Deployment Platforms</h3>
+              <p class="text-green-100 mb-4">Deploying full-stack apps with managed hosting platforms</p>
+            </div>
+            <div class="space-y-2">
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">Vercel</div>
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">Render</div>
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">Supabase Hosting</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isActiveTab('cloud')" class="flip-card skill-card perspective">
+      <div class="flip-card-inner">
+        <div class="flip-card-front bg-white dark:bg-gray-900 shadow-xl border border-gray-200 dark:border-gray-900">
+          <div class="p-8 h-full flex flex-col items-center justify-center">
+            <div class="skill-icon devops mb-4">🔧</div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">DevOps Basics</h3>
+            <div class="w-16 h-1 bg-gradient-to-r from-pink-500 to-yellow-500 rounded-full"></div>
+          </div>
+        </div>
+        <div class="flip-card-back bg-gradient-to-br from-pink-500 to-yellow-500 text-white shadow-xl">
+          <div class="p-6 h-full flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold mb-4">DevOps Foundations</h3>
+              <p class="text-pink-100 mb-4">Learning CI/CD workflows and automation tools to streamline deployments</p>
+            </div>
+            <div class="space-y-2">
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">GitHub Actions</div>
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">Docker (Basics)</div>
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">CI/CD Pipelines</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isActiveTab('cloud')" class="flip-card skill-card perspective">
+      <div class="flip-card-inner">
+        <div class="flip-card-front bg-white dark:bg-gray-900 shadow-xl border border-gray-200 dark:border-gray-900">
+          <div class="p-8 h-full flex flex-col items-center justify-center">
+            <div class="skill-icon cloud mb-4">🚀</div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Exploring Containers</h3>
+            <div class="w-16 h-1 bg-gradient-to-r from-green-500 to-teal-500 rounded-full"></div>
+          </div>
+        </div>
+        <div class="flip-card-back bg-gradient-to-br from-blue-500 to-purple-500 text-white shadow-xl">
+          <div class="p-6 h-full flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold mb-4">Learning Containerization</h3>
+              <p class="text-blue-100 mb-4">Currently exploring Docker and Kubernetes for scalable application deployment</p>
+            </div>
+            <div class="space-y-2">
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">Docker (Learning)</div>
+              <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">Kubernetes (Intro)</div>
+              <!-- <div class="bg-white bg-opacity-20 rounded-full px-3 py-1 text-sm">Helm</div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>

@@ -3,16 +3,16 @@
 .projects-section {
   position: relative;
   padding: 5rem 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  
   min-height: 100vh;
   overflow: hidden;
 }
 
-:host-context(.dark) .projects-section {
-  background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
-}
+/* :host-context(.dark) .projects-section {
+  background: linear-gradient(135deg, #2d3748 0%, #8b5cf6 100%);
+} */
 
-.floating-shapes {
+/* .floating-shapes {
   position: absolute;
   top: 0;
   left: 0;
@@ -20,9 +20,9 @@
   height: 100%;
   overflow: hidden;
   pointer-events: none;
-}
+} */
 
-.shape {
+/* .shape {
   position: absolute;
   opacity: 0.1;
   animation: float 6s ease-in-out infinite;
@@ -54,8 +54,8 @@
   bottom: 20%;
   left: 20%;
   animation-delay: 4s;
-}
-
+} */
+/* 
 @keyframes float {
   0%, 100% { 
     transform: translateY(0px) rotate(0deg); 
@@ -63,14 +63,14 @@
   50% { 
     transform: translateY(-20px) rotate(180deg); 
   }
-}
+} */
 
-.section-header {
+/* .section-header {
   position: relative;
   z-index: 2;
-}
+} */
 
-.section-header::after {
+/* .section-header::after {
   content: '';
   position: absolute;
   bottom: -10px;
@@ -80,27 +80,27 @@
   height: 4px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 2px;
-}
+} */
 
 .project-card {
   backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(248, 246, 246, 0.95);
   border: 1px solid rgba(255, 255, 255, 0.2);
   position: relative;
   overflow: hidden;
 }
 
 :host-context(.dark) .project-card {
-  background: rgba(31, 41, 55, 0.95);
-  border: 1px solid rgba(75, 85, 99, 0.3);
+  background: rgba(1, 7, 17, 0.95);
+  border: 1px solid rgba(243, 250, 250, 0.3);
 }
 
-.image-container {
+/* .image-container {
   position: relative;
   overflow: hidden;
-}
+} */
 
-.image-container::before {
+/* .image-container::before {
   content: '';
   position: absolute;
   top: 0;
@@ -111,11 +111,11 @@
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 1;
-}
-
+} */
+/* 
 .image-container:hover::before {
   opacity: 1;
-}
+} */
 
 .project-icon {
   width: 2.5rem;

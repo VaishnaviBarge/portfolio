@@ -1,44 +1,170 @@
-  .card:hover {
-    border-radius: 15px;
-    border-color: #ffffffdc;
-    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: all ease 0.2s;
-    transform: scale(1.05);
+
+.copm {
+  /* position: relative;  */
+  /* padding: 5rem 0; */
+  background: linear-gradient(135deg, #f2f3fa 0%, #d7b8f7 100%);
+  min-height: 150vh; 
+  overflow: hidden;
+}
+
+:host-context(.dark) .comp {
+  background: linear-gradient(135deg, #00050e 0%, #0e0525 100%);
+  min-height: 100vh; 
+  /* overflow: hidden; */
+}
+
+/* Enhanced 3D flip card animations */
+.perspective {
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+  transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 12px;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+/* Enhanced card hover effects */
+.skill-card {
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  height: 280px;
+}
+
+.skill-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Dark mode specific hover effects */
+:host-context(.dark) .skill-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Tab button animations */
+.tab-button {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.tab-button.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  border-radius: 2px;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Skill icons using CSS */
+.skill-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 auto;
+  transition: transform 0.3s ease;
+}
+
+.skill-icon:hover {
+  transform: scale(1.1);
+}
+
+.skill-icon.frontend {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.skill-icon.backend {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.skill-icon.database {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.skill-icon.cloud {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.skill-icon.devops {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+.skill-icon.mobile {
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  color: #333;
+}
+
+/* Entrance animations for cards */
+.skill-card {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.skill-card:nth-child(1) { animation-delay: 0.1s; }
+.skill-card:nth-child(2) { animation-delay: 0.2s; }
+.skill-card:nth-child(3) { animation-delay: 0.3s; }
+.skill-card:nth-child(4) { animation-delay: 0.4s; }
+.skill-card:nth-child(5) { animation-delay: 0.5s; }
+.skill-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+  to {
     opacity: 1;
-    transition: transform 0.2s ;
-    margin-bottom: 30px; 
+    transform: translateY(0);
   }
+}
 
-  .perspective {
-    perspective: 1000px;
+/* Enhanced gradient text effects */
+.bg-gradient-to-r.from-blue-600.via-purple-600.to-indigo-600 {
+  background: linear-gradient(90deg, #2563eb, #9333ea, #4f46e5);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .skill-card {
+    height: 260px;
   }
-
-  .transform-style-preserve-3d {
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
+  
+  .flip-card-inner {
+    transition: transform 0.5s ease;
   }
-
-  .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-  }
-
-  /* .flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-
-  } */
-
-  .backface-hidden {
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-  }
-
-  .flip-card-back {
-    border-radius: 5px;
-    color: white;
-    transform: rotateY(180deg);
-  }
+}
