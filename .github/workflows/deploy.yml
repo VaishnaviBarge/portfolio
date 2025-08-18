@@ -3,7 +3,10 @@ name: Deploy Angular App to GitHub Pages
 on:
   push:
     branches:
-      - main   # deploy when code is pushed to main branch
+      - main  
+
+permissions:
+  contents: write 
 
 jobs:
   build-deploy:
