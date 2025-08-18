@@ -86,4 +86,10 @@ export class AppComponent implements OnInit {
   onRouteChange() {
     this.menuOpen = false;
   }
+
+  closeMenuOnMobile() {
+  if (window.innerWidth < 768) { 
+    this.menuOpen = false;
+  }
+}
 }

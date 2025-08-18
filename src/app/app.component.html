@@ -1,39 +1,71 @@
 <div class="" [class.dark]="isDarkMode">
+  <!-- Mobile Toggle Button -->
+  <button
+    (click)="toggleMenu()"
+    [ngClass]="{
+      'bg-violet-100': menuOpen,
+      'dark:bg-violet-900/50': menuOpen
+    }"
+    class="fixed top-4 left-4 z-50 w-12 h-12 bg-white/90 backdrop-blur-xl rounded-xl shadow-lg 
+           flex flex-col items-center justify-center gap-1 transition-all duration-300 hover:scale-105 
+           dark:bg-gray-900/90 md:hidden">
+    <span 
+      [ngClass]="{
+        'rotate-45': menuOpen,
+        'translate-y-1.5': menuOpen
+      }"
+      class="w-5 h-0.5 bg-violet-600 dark:bg-violet-400 transition-all duration-300 rounded"></span>
+    <span 
+      [ngClass]="{'opacity-0': menuOpen}"
+      class="w-5 h-0.5 bg-violet-600 dark:bg-violet-400 transition-all duration-300 rounded"></span>
+    <span 
+      [ngClass]="{
+        '-rotate-45': menuOpen,
+        '-translate-y-1.5': menuOpen
+      }"
+      class="w-5 h-0.5 bg-violet-600 dark:bg-violet-400 transition-all duration-300 rounded"></span>
+  </button>
+
   <!-- Sidebar -->
   <nav
-    class="glass-effect fixed left-0 top-0 h-screen w-16 bg-white/90 backdrop-blur-xl border-r border-white/20 
-           transition-all duration-300 ease-out z-50 flex flex-col overflow-visible 
+    [ngClass]="{
+      'translate-x-0': menuOpen,
+      '-translate-x-full': !menuOpen,
+      'md:translate-x-0': true,
+      'md:w-16': !menuOpen,
+      'md:w-64': menuOpen
+    }"
+    class="glass-effect fixed left-0 top-0 h-screen w-64 bg-white/90 backdrop-blur-xl border-r border-white/20
+           transition-all duration-300 ease-out z-40 flex flex-col overflow-visible 
            shadow-lg dark:bg-[linear-gradient(135deg,_#00050e_0%,_#00020e_100%)]
- dark:border-gray-900/30"
-    [class.w-64]="menuOpen"
-    [class.w-16]="!menuOpen"
-  >
+           dark:border-gray-900/30 -translate-x-full md:translate-x-0 md:w-16">
     <!-- Navigation Links -->
-    <ul class="flex-1 px-2 space-y-1 mt-4">
+    <ul class="flex-1 px-2 space-y-1 mt-16 md:mt-4">
       <li class="pt-2">
         <div class="relative nav-item">
           <a routerLink="/home" 
              routerLinkActive="text-violet-600 bg-violet-50/50 dark:text-violet-400 dark:bg-violet-900/20"
              class="flex items-center px-3 py-3 rounded-xl text-gray-600 transition-all duration-300 
                     relative overflow-hidden cursor-pointer hover:text-violet-600 hover:bg-violet-50/50 
-                    hover:scale-105 dark:text-gray-400 dark:hover:text-violet-400 dark:hover:bg-violet-900/20 group">
+                    hover:scale-105 dark:text-gray-400 dark:hover:text-violet-400 dark:hover:bg-violet-900/20 group"
+             (click)="closeMenuOnMobile()">
             <div class="w-6 h-6 flex items-center justify-center text-lg flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
               <i class="fas fa-home"></i>
             </div>
-            <!-- Mobile/Open sidebar label -->
-            <span class="ml-3 text-sm font-medium transition-all duration-300 whitespace-nowrap"
-                  [class.hidden]="!menuOpen"
-                  [class.block]="menuOpen">
+            <!-- Label for expanded sidebar -->
+            <span 
+              [ngClass]="{'opacity-100': menuOpen, 'md:opacity-100': !menuOpen}"
+              class="ml-3 text-sm font-medium transition-all duration-300 whitespace-nowrap opacity-0">
               Home
             </span>
           </a>
-          <!-- Tooltip for desktop -->
+          <!-- Tooltip for desktop collapsed state -->
           <div class="absolute left-full top-1/2 transform -translate-y-1/2 ml-2 px-3 py-2 
                       bg-gray-900 dark:bg-gray-700 text-white text-sm rounded-lg shadow-xl 
                       opacity-0 invisible transition-all duration-200 whitespace-nowrap z-[60] pointer-events-none
                       group-hover:opacity-100 group-hover:visible group-hover:translate-x-1
-                      md:block"
-               [class.hidden]="menuOpen">
+                      hidden md:block"
+               [class.md:hidden]="menuOpen">
             Home
             <div class="absolute right-full top-1/2 transform -translate-y-1/2 
                         border-4 border-transparent border-r-gray-900 dark:border-r-gray-700"></div>
@@ -47,52 +79,25 @@
              routerLinkActive="text-violet-600 bg-violet-50/50 dark:text-violet-400 dark:bg-violet-900/20"
              class="flex items-center px-3 py-3 rounded-xl text-gray-600 transition-all duration-300 
                     relative overflow-hidden cursor-pointer hover:text-violet-600 hover:bg-violet-50/50 
-                    hover:scale-105 dark:text-gray-400 dark:hover:text-violet-400 dark:hover:bg-violet-900/20 group">
+                    hover:scale-105 dark:text-gray-400 dark:hover:text-violet-400 dark:hover:bg-violet-900/20 group"
+             (click)="closeMenuOnMobile()">
             <div class="w-6 h-6 flex items-center justify-center text-lg flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
               <i class="fas fa-project-diagram"></i>
             </div>
-            <span class="ml-3 text-sm font-medium transition-all duration-300 whitespace-nowrap"
-                  [class.hidden]="!menuOpen"
-                  [class.block]="menuOpen">
+            <span 
+              [ngClass]="{'opacity-100': menuOpen, 'md:opacity-100': !menuOpen}"
+              class="ml-3 text-sm font-medium transition-all duration-300 whitespace-nowrap opacity-0">
               Projects
             </span>
           </a>
-          <!-- Tooltip for desktop -->
+          <!-- Tooltip for desktop collapsed state -->
           <div class="absolute left-full top-1/2 transform -translate-y-1/2 ml-2 px-3 py-2 
                       bg-gray-900 dark:bg-gray-700 text-white text-sm rounded-lg shadow-xl 
                       opacity-0 invisible transition-all duration-200 whitespace-nowrap z-[60] pointer-events-none
                       group-hover:opacity-100 group-hover:visible group-hover:translate-x-1
-                      md:block"
-               [class.hidden]="menuOpen">
+                      hidden md:block"
+               [class.md:hidden]="menuOpen">
             Projects
-            <div class="absolute right-full top-1/2 transform -translate-y-1/2 
-                        border-4 border-transparent border-r-gray-900 dark:border-r-gray-700"></div>
-          </div>
-        </div>
-      </li>
-
-      <li>
-        <div class="relative nav-item">
-          <a class="flex items-center px-3 py-3 rounded-xl text-gray-600 transition-all duration-300 
-                    relative overflow-hidden cursor-pointer hover:text-violet-600 hover:bg-violet-50/50 
-                    hover:scale-105 dark:text-gray-400 dark:hover:text-violet-400 dark:hover:bg-violet-900/20 group">
-            <div class="w-6 h-6 flex items-center justify-center text-lg flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
-              <i class="fas fa-certificate"></i>
-            </div>
-            <span class="ml-3 text-sm font-medium transition-all duration-300 whitespace-nowrap"
-                  [class.hidden]="!menuOpen"
-                  [class.block]="menuOpen">
-              Certificates
-            </span>
-          </a>
-          <!-- Tooltip for desktop -->
-          <div class="absolute left-full top-1/2 transform -translate-y-1/2 ml-2 px-3 py-2 
-                      bg-gray-900 dark:bg-gray-700 text-white text-sm rounded-lg shadow-xl 
-                      opacity-0 invisible transition-all duration-200 whitespace-nowrap z-[60] pointer-events-none
-                      group-hover:opacity-100 group-hover:visible group-hover:translate-x-1
-                      md:block"
-               [class.hidden]="menuOpen">
-            Certificates
             <div class="absolute right-full top-1/2 transform -translate-y-1/2 
                         border-4 border-transparent border-r-gray-900 dark:border-r-gray-700"></div>
           </div>
@@ -105,23 +110,24 @@
              routerLinkActive="text-violet-600 bg-violet-50/50 dark:text-violet-400 dark:bg-violet-900/20"
              class="flex items-center px-3 py-3 rounded-xl text-gray-600 transition-all duration-300 
                     relative overflow-hidden cursor-pointer hover:text-violet-600 hover:bg-violet-50/50 
-                    hover:scale-105 dark:text-gray-400 dark:hover:text-violet-400 dark:hover:bg-violet-900/20 group">
+                    hover:scale-105 dark:text-gray-400 dark:hover:text-violet-400 dark:hover:bg-violet-900/20 group"
+             (click)="closeMenuOnMobile()">
             <div class="w-6 h-6 flex items-center justify-center text-lg flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
               <i class="fas fa-cogs"></i>
             </div>
-            <span class="ml-3 text-sm font-medium transition-all duration-300 whitespace-nowrap"
-                  [class.hidden]="!menuOpen"
-                  [class.block]="menuOpen">
+            <span 
+              [ngClass]="{'opacity-100': menuOpen, 'md:opacity-100': !menuOpen}"
+              class="ml-3 text-sm font-medium transition-all duration-300 whitespace-nowrap opacity-0">
               Skills
             </span>
           </a>
-          <!-- Tooltip for desktop -->
+          <!-- Tooltip for desktop collapsed state -->
           <div class="absolute left-full top-1/2 transform -translate-y-1/2 ml-2 px-3 py-2 
                       bg-gray-900 dark:bg-gray-700 text-white text-sm rounded-lg shadow-xl 
                       opacity-0 invisible transition-all duration-200 whitespace-nowrap z-[60] pointer-events-none
                       group-hover:opacity-100 group-hover:visible group-hover:translate-x-1
-                      md:block"
-               [class.hidden]="menuOpen">
+                      hidden md:block"
+               [class.md:hidden]="menuOpen">
             Skills
             <div class="absolute right-full top-1/2 transform -translate-y-1/2 
                         border-4 border-transparent border-r-gray-900 dark:border-r-gray-700"></div>
@@ -135,23 +141,24 @@
              routerLinkActive="text-violet-600 bg-violet-50/50 dark:text-violet-400 dark:bg-violet-900/20"
              class="flex items-center px-3 py-3 rounded-xl text-gray-600 transition-all duration-300 
                     relative overflow-hidden cursor-pointer hover:text-violet-600 hover:bg-violet-50/50 
-                    hover:scale-105 dark:text-gray-400 dark:hover:text-violet-400 dark:hover:bg-violet-900/20 group">
+                    hover:scale-105 dark:text-gray-400 dark:hover:text-violet-400 dark:hover:bg-violet-900/20 group"
+             (click)="closeMenuOnMobile()">
             <div class="w-6 h-6 flex items-center justify-center text-lg flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
               <i class="fas fa-envelope"></i>
             </div>
-            <span class="ml-3 text-sm font-medium transition-all duration-300 whitespace-nowrap"
-                  [class.hidden]="!menuOpen"
-                  [class.block]="menuOpen">
+            <span 
+              [ngClass]="{'opacity-100': menuOpen, 'md:opacity-100': !menuOpen}"
+              class="ml-3 text-sm font-medium transition-all duration-300 whitespace-nowrap opacity-0">
               Contact
             </span>
           </a>
-          <!-- Tooltip for desktop -->
+          <!-- Tooltip for desktop collapsed state -->
           <div class="absolute left-full top-1/2 transform -translate-y-1/2 ml-2 px-3 py-2 
                       bg-gray-900 dark:bg-gray-700 text-white text-sm rounded-lg shadow-xl 
                       opacity-0 invisible transition-all duration-200 whitespace-nowrap z-[60] pointer-events-none
                       group-hover:opacity-100 group-hover:visible group-hover:translate-x-1
-                      md:block"
-               [class.hidden]="menuOpen">
+                      hidden md:block"
+               [class.md:hidden]="menuOpen">
             Contact
             <div class="absolute right-full top-1/2 transform -translate-y-1/2 
                         border-4 border-transparent border-r-gray-900 dark:border-r-gray-700"></div>
@@ -172,19 +179,20 @@
           <div class="w-6 h-6 flex items-center justify-center text-lg flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
             <i [class]="isDarkMode ? 'fas fa-sun' : 'fas fa-moon'"></i>
           </div>
-          <span class="ml-3 text-sm font-medium transition-all duration-300 whitespace-nowrap"
-                [class.hidden]="!menuOpen"
-                [class.block]="menuOpen">
-            {{ isDarkMode ? 'Light' : 'Dark' }}
+          <span 
+            [ngClass]="{'opacity-100': menuOpen, 'md:opacity-100': !menuOpen}"
+            class="ml-3 text-sm font-medium transition-all duration-300 whitespace-nowrap opacity-0">
+            <!-- {{ isDarkMode ? 'Light' : 'Dark' }} -->
           </span>
         </button>
-        <!-- Tooltip for desktop -->
-        <div class="absolute left-full top-1/2 transform -translate-y-1/2 ml-2 px-3 py-2 
-                    bg-gray-900 dark:bg-gray-700 text-white text-sm rounded-lg shadow-xl 
-                    opacity-0 invisible transition-all duration-200 whitespace-nowrap z-[60] pointer-events-none
-                    group-hover:opacity-100 group-hover:visible group-hover:translate-x-1
-                    md:block"
-             [class.hidden]="menuOpen">
+        <!-- Tooltip for desktop collapsed state -->
+                  <div 
+            [ngClass]="{'md:hidden': menuOpen}"
+            class="absolute left-full top-1/2 transform -translate-y-1/2 ml-2 px-3 py-2 
+                      bg-gray-900 dark:bg-gray-700 text-white text-sm rounded-lg shadow-xl 
+                      opacity-0 invisible transition-all duration-200 whitespace-nowrap z-[60] pointer-events-none
+                      group-hover:opacity-100 group-hover:visible group-hover:translate-x-1
+                      hidden md:block">
           {{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}
           <div class="absolute right-full top-1/2 transform -translate-y-1/2 
                       border-4 border-transparent border-r-gray-900 dark:border-r-gray-700"></div>
@@ -193,31 +201,9 @@
     </div>
   </nav>
 
-  <!-- Mobile Toggle Button -->
-  <!-- <button
-    class="fixed top-4 left-4 z-50 w-12 h-12 bg-white/90 backdrop-blur-xl rounded-xl shadow-lg 
-           flex flex-col items-center justify-center gap-1 transition-all duration-300 hover:scale-105 
-           dark:bg-gray-900/90 md:hidden"
-    (click)="toggleMenu()"
-    [class.bg-violet-100]="menuOpen"
-    [class.dark:bg-violet-900/50]="menuOpen"
-  >
-    <span class="w-5 h-0.5 bg-violet-600 dark:bg-violet-400 transition-all duration-300 rounded"
-          [class.rotate-45]="menuOpen"
-          [class.translate-y-1.5]="menuOpen">
-    </span>
-    <span class="w-5 h-0.5 bg-violet-600 dark:bg-violet-400 transition-all duration-300 rounded"
-          [class.opacity-0]="menuOpen">
-    </span>
-    <span class="w-5 h-0.5 bg-violet-600 dark:bg-violet-400 transition-all duration-300 rounded"
-          [class.-rotate-45]="menuOpen"
-          [class.-translate-y-1.5]="menuOpen">
-    </span>
-  </button> -->
-
   <!-- Mobile Overlay -->
   <div
-    class="fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 md:hidden"
+    class="fixed inset-0 bg-black/50 z-30 transition-opacity duration-300 md:hidden"
     [class.opacity-100]="menuOpen"
     [class.opacity-0]="!menuOpen"
     [class.pointer-events-none]="!menuOpen"
@@ -225,10 +211,8 @@
   </div>
 
   <!-- Main Content -->
-  <main class="transition-all duration-300"
-        [class.ml-16]="!menuOpen"
-        [class.ml-64]="menuOpen && false"
-        [class.ml-0]="menuOpen">
+  <main class="transition-all duration-300 min-h-screen ml-0 md:ml-16"
+        [ngClass]="{'md:ml-64': menuOpen}">
     <router-outlet></router-outlet>
   </main>
 </div>

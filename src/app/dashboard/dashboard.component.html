@@ -1,103 +1,172 @@
+
+
+
+<!-- Main Container -->
 <div class="relative min-h-screen light-gradient dark:dark-gradient transition-all duration-500">
   <!-- Canvas for Interactive Particles -->
-  <canvas #particleCanvas class="absolute inset-0 w-full h-full z-1"></canvas>
+  <canvas #particleCanvas class="fixed inset-0 w-full h-full z-0"></canvas>
 
   <!-- Enhanced overlay with gradient -->
-  <div class="absolute inset-0 dark:bg-[linear-gradient(135deg,_#00050e_0%,_#0e0525_100%)]"></div>
+  <div class="fixed inset-0 dark:bg-[linear-gradient(135deg,_#00050e_0%,_#0e0525_100%)] pointer-events-none"></div>
 
-  <!-- Main Content Container -->
-  <div class="relative grid grid-cols-1 lg:grid-cols-2 gap-6 pt-4 px-8 pb-8 lg:pt-8 lg:px-16 lg:pb-16 min-h-screen items-center z-10">
- 
-    <!-- Left Side - Content -->
-    <div class="fade-in space-y-6 px-4">
+  <!-- Intro Section -->
+  <section id="intro" class="relative min-h-screen flex items-center justify-center z-10 pt-16">
+    <div class="max-w-4xl mx-auto px-6 sm:px-8 text-center" [@fadeIn]>
       <!-- Main Heading -->
-      <div class="text-center lg:text-left">
-        <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl text-gray-900 dark:text-white mb-4 leading-tight">
-  Hi, it's 
-  <span 
-    class="text-gradient bg-gradient-to-r from-purple-900 via-purple-600 to-pink-400 
-           dark:from-blue-300 dark:via-purple-600 dark:to-pink-300 
-           bg-clip-text text-transparent font-bold transition-all duration-300"
-  >
-    Vaishnavi Barge
-  </span>
-</h1>
+      <div class="space-y-6">
+        
+        <h1 class="font-serif ">
+        <div class="text-lg sm:text-2xl text-slate-600 dark:text-slate-300 mb-2">
+            Hi, I'm
+        </div>
+        <div class="text-5xl sm:text-6xl lg:text-6xl xl:text-6xl font-serif font-black text-slate-900 dark:text-white leading-tight tracking-tight whitespace-break-spaces">
+            Vaishnavi Barge
+        </div>
+        
+        <!-- Simple cursor -->
+        <!-- <span class="inline-block w-1 h-12 sm:h-16 lg:h-20 bg-emerald-500 dark:bg-emerald-400 ml-2 animate-pulse"></span> -->
+    </h1>
+    
+        <!-- font-serif prose lg:prose-lg 2xl:prose-xl dark:prose-invert max-w-full prose-headings:text-foreground prose-strong:text-foreground prose-a:text-foreground prose-a:transition-colors prose-a:duration-200 prose-a:ease-in-out hover:prose-a:text-muted-foreground -->
 
-        <h2 class="font-serif text-xl sm:text-2xl lg:text-3xl text-gray-700 dark:text-gray-300 mb-6">
-          Shaping the Future with Code
+
+
+        <h2 class="text-xl sm:text-2xl lg:text-3xl text-gray-700 dark:text-gray-300 font-light">
+          Crafting Digital Experiences with Code
         </h2>
-        <div class="font-serif text-lg sm:text-xl lg:text-2xl">
-          <span class="text-gradient-purple bg-gradient-to-r from-violet-500 to-purple-500 dark:from-violet-400 dark:to-purple-400 bg-clip-text text-transparent font-semibold">
+
+        <!-- Typing Animation -->
+        <div class="text-2xl sm:text-3xl lg:text-4xl font-medium">
+          <span class="text-gradient-purple bg-gradient-to-r from-violet-500 to-purple-500 
+                     dark:from-violet-400 dark:to-purple-400 bg-clip-text text-transparent">
             {{displayText}}<span class="animate-pulse">|</span>
           </span>
         </div>
-      </div>
 
-      <!-- Description -->
-      <div class="glass-effect bg-white/40 dark:bg-gray-800/40 p-4 rounded-2xl shadow-xl border border-white/20 dark:border-gray-700/50">
-        <p class="font-serif text-base sm:text-md text-gray-700 dark:text-gray-300 leading-relaxed">
-          With hands-on experience in <span class="text-blue-600 dark:text-blue-400 font-semibold">Angular</span> and 
-          <span class="text-indigo-600 dark:text-indigo-400 font-semibold">Supabase</span>, and a solid foundation in 
-          <span class="text-purple-600 dark:text-purple-400 font-semibold">Core Java</span> and 
-          <span class="text-emerald-600 dark:text-emerald-400 font-semibold">Data Structures</span>, 
-          I'm passionate about building full-stack web applications that are efficient and user-centric. 
-          Currently enhancing my skills in <span class="text-pink-600 dark:text-pink-400 font-semibold">Prisma ORM</span> and 
-          <span class="text-yellow-600 dark:text-yellow-400 font-semibold">Next.js</span>, 
-          I'm eager to contribute to innovative and impactful software development projects.
-        </p>
-      </div>
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 mt-8">
+          <a href="../../assets/Vaishnavi_barge cv.pdf" 
+             download="Vaishnavi_Barge_CV.pdf" 
+             class="btn-primary group px-8 py-4 text-white rounded-xl shadow-lg font-semibold 
+                    bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-700 hover:to-purple-900 
+                    transition-all duration-300 transform hover:scale-105 hover:-translate-y-1">
+            <i class='bx bx-download mr-2 group-hover:animate-bounce'></i>
+            Download Resume
+          </a>
+          <button 
+            (click)="navigateToSection('about')"
+            class="btn-secondary group px-8 py-4 text-purple-600 dark:text-purple-400 rounded-xl 
+                   border-2 border-purple-600 dark:border-purple-400 hover:bg-purple-600 hover:text-white 
+                   font-semibold transition-all duration-300 transform hover:scale-105 hover:-translate-y-1">
+            <i class='bx bx-user mr-2 group-hover:animate-bounce'></i>
+            Learn More
+          </button>
+        </div>
 
-      <!-- Social Links -->
-      <div class="flex justify-center lg:justify-start space-x-6" *ngIf="showElement" [@fadeIn]>
-        <a href="https://www.linkedin.com/in/vaishnavi-barge" target="_blank" 
-           class="social-icon group text-2xl text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 p-2 rounded-xl bg-white/20 dark:bg-gray-800/30 backdrop-blur-sm border border-blue-300/50 dark:border-blue-500/50 transition-all duration-300 hover:scale-110 hover:rotate-3">
-          <i class='bx bxl-linkedin group-hover:animate-bounce'></i>
-        </a>
-        <a href="https://github.com/VaishnaviBarge" target="_blank" 
-           class="social-icon group text-2xl text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white p-2 rounded-xl bg-white/20 dark:bg-gray-800/30 backdrop-blur-sm border border-gray-300/50 dark:border-gray-500/50 transition-all duration-300 hover:scale-110 hover:rotate-3">
-          <i class='bx bxl-github group-hover:animate-bounce'></i>
-        </a>
-        <a href="https://x.com/vaish1903" target="_blank" 
-           class="social-icon group text-2xl text-blue-400 dark:text-blue-300 hover:text-blue-500 dark:hover:text-blue-200 p-2 rounded-xl bg-white/20 dark:bg-gray-800/30 backdrop-blur-sm border border-blue-300/50 dark:border-blue-500/50 transition-all duration-300 hover:scale-110 hover:rotate-3">
-          <i class='bx bxl-twitter group-hover:animate-bounce'></i>
-        </a>
-      </div>
-
-      <!-- Action Buttons -->
-      <div class="flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-6">
-        <a href="../../assets/Vaishnavi_barge cv.pdf" download="Vaishnavi_Barge_CV.pdf" 
-           class="btn-secondary group px-8 py-3 text-white rounded-xl shadow-lg hover-lift font-semibold text-center bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-700 hover:to-purple-900 transition-all duration-300 transform hover:scale-105">
-          <i class='bx bx-download mr-2 group-hover:animate-bounce'></i>Download CV
-        </a>
-        <a href="#contact" 
-           class="btn-secondary group px-8 py-3 text-white rounded-xl shadow-lg hover-lift font-semibold text-center bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-700 hover:to-purple-900 transition-all duration-300 transform hover:scale-105">
-          <i class='bx bx-envelope mr-2 group-hover:animate-bounce'></i>Contact Me
-        </a>
+        <!-- Social Links -->
+        <div class="flex justify-center space-x-6 mt-8" [@scaleIn]>
+          <a href="https://www.linkedin.com/in/vaishnavi-barge" target="_blank" 
+             class="social-icon p-3 text-2xl text-blue-600 dark:text-blue-400 
+                    bg-white/10 dark:bg-gray-800/30 backdrop-blur-sm rounded-full
+                     ">
+            <i class='bx bxl-linkedin'></i>
+          </a>
+          <a href="https://github.com/VaishnaviBarge" target="_blank" 
+             class="social-icon p-3 text-2xl text-gray-700 dark:text-gray-300 
+                    bg-white/10 dark:bg-gray-800/30 backdrop-blur-sm rounded-full
+                     ">
+            <i class='bx bxl-github'></i>
+          </a>
+          <a href="https://x.com/vaish1903" target="_blank" 
+             class="social-icon p-3 text-2xl text-blue-400 dark:text-blue-300 
+                    bg-white/10 dark:bg-gray-800/30 backdrop-blur-sm rounded-full
+                     ">
+            <i class='bx bxl-twitter'></i>
+          </a>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Right Side - Profile Image -->
-    <!-- <div class="flex justify-center items-center fade-in">
-      <div class="profile-container relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 hover-lift">
-        
-        <div class="absolute inset-0 rounded-full animate-spin-slow p-1">
-          <div class="w-full h-full rounded-full bg-white dark:bg-gray-900 p-2">
-            <img src="../../assets/image.jpg" alt="Vaishnavi Barge Profile" 
-                 class="w-full h-full object-cover rounded-full ">
+  <!-- About Section -->
+  <section id="about" class="relative min-h-screen py-20 z-10">
+    <div class="max-w-6xl mx-auto px-6 sm:px-8">
+      <!-- Section Header -->
+      <div class="text-center mb-16" [@fadeIn]>
+        <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          About Me
+        </h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-purple-600 to-pink-600 mx-auto rounded-full"></div>
+      </div>
+
+      <!-- About Content Grid -->
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Description -->
+        <div class="space-y-6" >
+          <div class="glass-effect bg-white/20 dark:bg-gray-800/20 p-8 rounded-2xl 
+                      border border-white/20 dark:border-gray-700/30 backdrop-blur-sm">
+            <h2 class="font-mono text-gray-600 dark:text-white mb-4">
+              Passionate Developer & Problem Solver
+            </h2>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4 ">
+              With hands-on experience in <strong class="text-purple-600 dark:text-purple-400">Angular</strong> and 
+              <strong class="text-indigo-600 dark:text-indigo-400">Supabase</strong>, and a solid foundation in 
+              <strong class="text-violet-600 dark:text-violet-400">Core Java</strong> and 
+              <strong class="text-emerald-600 dark:text-emerald-400">Data Structures</strong>, 
+              I specialize in building efficient, user-centric web applications.
+            </p>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              Currently enhancing my skills in <strong class="text-pink-600 dark:text-pink-400">Prisma ORM</strong> and 
+              <strong class="text-yellow-600 dark:text-yellow-400">Next.js</strong>. 
+              I'm eager to contribute to innovative software development projects that make a real impact.
+            </p>
+          </div>
+
+          <!-- Contact Button -->
+          <div class="flex space-x-4">
+            <a href="https://www.linkedin.com/in/vaishnavi-barge/" 
+               class="btn-primary px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-800 
+                      text-white rounded-lg font-semibold hover:from-purple-700 hover:to-purple-900 
+                      transition-all duration-300 transform hover:scale-105 flex items-center">
+              <i class='bx bx-envelope mr-2'></i>
+              Get In Touch
+            </a>
           </div>
         </div>
-        
-        
-        <div class="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center text-white text-xl animate-bounce">
-          <i class='bx bx-code-alt'></i>
+
+        <!-- Professional Image Section -->
+        <div class="flex flex-col items-center ">
+
+          <div class="flex items-center justify-center w-60 h-60 overflow-hidden rounded-full">
+            <img src="../../assets/vaish.jpg" 
+                alt="Vaishnavi Barge - Full Stack Developer" 
+                class="object-cover w-full h-full">
+          </div>
+
+          <h2 class=" flex items-center justify-center text-3xl sm:text-4xl font-bold 
+                    bg-gradient-to-r from-gray-900 to-gray-600 
+                    dark:from-white dark:to-gray-300 bg-clip-text text-transparent ">
+            Vaishnavi Barge
+          </h2>
+
+          <div class="flex items-center justify-center ">
+            <p class="text-md dark:text-gray-100 dark:text-gray-600 font-medium">
+              Software Engineer
+            </p>
+          </div>
+
+          <a href="https://x.com/vaish1903" target="_blank" rel="noopener noreferrer"
+            class="flex items-center justify-center gap-3 py-2 px-6 border-gray-900 border-2
+                    dark:border-white dark:text-white rounded-2xl shadow-lg 
+                    hover:scale-105 hover:shadow-xl transition-all duration-300 ease-in-out 
+                    w-50">
+            <span>Say Hi!</span>
+            <i class='bx bxl-twitter text-xl'></i>
+          </a>
+
         </div>
-        <div class="absolute -bottom-4 -left-4 w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center text-white text-xl animate-bounce" style="animation-delay: 1s;">
-          <i class='bx bx-shield-alt-2'></i>
-        </div>
-        <div class="absolute top-1/2 -left-6 w-10 h-10 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center text-white text-lg animate-bounce" style="animation-delay: 2s;">
-          <i class='bx bxl-angular'></i>
-        </div>
+
       </div>
-    </div> -->
-  </div>
+    </div>
+  </section>
 </div>
